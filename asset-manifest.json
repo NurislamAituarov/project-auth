@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/project-auth/static/css/main.86aa7120.css",
+    "main.js": "/project-auth/static/js/main.e79bf33b.js",
+    "static/media/fon.jpg": "/project-auth/static/media/fon.78ff0a91d659260502e9.jpg",
+    "static/media/house-icon.png": "/project-auth/static/media/house-icon.c5be440868a5dfe015ee.png",
+    "index.html": "/project-auth/index.html",
+    "static/media/success.svg": "/project-auth/static/media/success.ba0933f245122279494deab273580d5a.svg",
+    "main.86aa7120.css.map": "/project-auth/static/css/main.86aa7120.css.map",
+    "main.e79bf33b.js.map": "/project-auth/static/js/main.e79bf33b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86aa7120.css",
+    "static/js/main.e79bf33b.js"
+  ]
+}
