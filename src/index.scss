@@ -1,0 +1,23 @@
+body {
+  color: rgb(247, 247, 247);
+  background: var(--background-main);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+:root {
+  --background-header: black;
+  --background-main: #1a202c;
+}

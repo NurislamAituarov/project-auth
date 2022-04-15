@@ -1,0 +1,61 @@
+.main__container {
+  height: 100vh;
+}
+
+.addUser {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  p {
+    font-size: 25px;
+    color: green;
+  }
+  img {
+    margin-top: 20px;
+  }
+}
+
+.main__auth {
+  text-align: center;
+  color: green;
+  h2 {
+    text-transform: uppercase;
+    font-size: calc(24px + 20 * (100vw / 1900));
+    line-height: calc(26px + 24 * (100vw / 1400));
+  }
+  span {
+    font-size: 18px;
+  }
+}
+.fon {
+  background-image: url(../../Images/fon.jpg);
+  background-size: cover;
+}
+@media (max-width: 1008px) {
+  .main__house-img {
+    width: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .main__house-img {
+    display: none;
+  }
+  .main__auth {
+    width: 100%;
+  }
+}
+@media (max-width: 378px) {
+  .addUser {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      width: 50px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}

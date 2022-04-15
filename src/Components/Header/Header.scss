@@ -1,0 +1,27 @@
+.header__container {
+  position: fixed;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px 400px;
+  background-color: var(--background-header);
+}
+.header__logo {
+  height: 40px;
+}
+.header__btns-login {
+  button {
+    margin-left: 30px;
+  }
+}
+@media (max-width: 1408px) {
+  .header__container {
+    padding: 20px 150px;
+  }
+}
+@media (max-width: 768px) {
+  .header__container {
+    padding: 20px;
+  }
+}
+@media (max-width: 378px) {
+}
