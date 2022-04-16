@@ -1,9 +1,10 @@
 import './Main.scss';
 import { motion } from 'framer-motion';
-import house from '../../Images/house-icon.png';
-import { useSelector } from 'react-redux';
-import add from '../../Images/success.svg';
 import cn from 'classnames';
+import { useSelector } from 'react-redux';
+
+import house from '../../Images/house-icon.png';
+import add from '../../Images/success.svg';
 
 export function Main({ open }) {
   const { register, isAuth, currentUser } = useSelector((state) => state.user);

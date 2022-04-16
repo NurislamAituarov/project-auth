@@ -1,15 +1,17 @@
 import { TextField } from '@mui/material';
 import { Controller, useForm, useFormState } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 import ContainedButtons from '../ContainedButtons';
 import { loginValidation, passwordValidation } from './validation';
 import { registerSuccessfully } from '../../Actions';
 import { createUser } from '../../Api/client';
-import { useState } from 'react';
-import ClearForm from './ClearForm';
 
-export function FormRegistration({ setOpen, setModal }) {
+import ClearForm from './form-components/ClearForm';
+import { Eye } from './form-components/Eye';
+
+export function FormRegistration({ setOpen, setModal, showPassword, setShowPassword }) {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       FirstName: '',
@@ -87,6 +89,7 @@ export function FormRegistration({ setOpen, setModal }) {
             {error.errorItem}
           </h3>
         )}
+
         <Controller
           control={control}
           name="Email"
@@ -104,27 +107,33 @@ export function FormRegistration({ setOpen, setModal }) {
             />
           )}
         />
-        <Controller
-          control={control}
-          name="Password"
-          rules={passwordValidation}
-          render={({ field }) => (
-            <TextField
-              margin="normal"
-              fullWidth={true}
-              label="Set a Password"
-              variant="outlined"
-              type="password"
-              onChange={(e) => field.onChange(e)}
-              value={field.value}
-              error={!!errors.Password?.message}
-              helperText={errors.Password?.message}
-            />
-          )}
-        />
+        <div className="password__container">
+          <div onClick={() => setShowPassword(!showPassword)} className="password__eye">
+            <Eye visible={showPassword} />
+          </div>
+          <Controller
+            control={control}
+            name="Password"
+            rules={passwordValidation}
+            render={({ field }) => (
+              <TextField
+                margin="normal"
+                fullWidth={true}
+                label="Set a Password"
+                variant="outlined"
+                type={!showPassword ? 'password' : 'text'}
+                onChange={(e) => field.onChange(e)}
+                value={field.value}
+                error={!!errors.Password?.message}
+                helperText={errors.Password?.message}
+              />
+            )}
+          />
+        </div>
+
         <ClearForm reset={reset} />
         <ContainedButtons
-          title="Sign up"
+          title="Create account"
           fullWidth={true}
           size="large"
           type="submit"

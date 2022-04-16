@@ -43,7 +43,7 @@ export const AvatarUser = () => {
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot">
-        <Avatar alt={user.FirstName} src="/static/images/avatar/1.jpg" />
+        <Avatar alt={user.FirstName} src="/" />
       </StyledBadge>
     </Stack>
   );

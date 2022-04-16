@@ -19,6 +19,9 @@ export const passwordValidation = {
     if (!value.match(/[0-9]/g)) {
       return 'One digit required';
     }
+    if (value.match(/[' ']/g)) {
+      return 'Must not have spaces';
+    }
     return true;
   },
 };

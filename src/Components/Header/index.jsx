@@ -1,12 +1,13 @@
 import './Header.scss';
 import { Stack } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ContainedButtons from '../ContainedButtons';
 import { NestedModal } from '../Modal-form';
 import { useEffect, useState } from 'react';
 import { getUsers } from '../../Api/client';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { auth, logOut } from '../../Actions';
 import { AvatarUser } from './Avatar';
 import { HomeIcon } from './HomeIcon';
@@ -17,7 +18,7 @@ export function Header({ open, setOpen }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getUsers().then((users) => console.log(users));
+    // getUsers().then((users) => console.log(users));
     dispatch(auth());
   }, []);
 

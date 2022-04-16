@@ -9,6 +9,7 @@ import { FormRegistration } from './FormRegistration';
 import { FormAuthorization } from './FormAuthorization';
 
 export function NestedModal({ open, setOpen, handleClose, handleOpen, modal, setModal }) {
+  const [showPassword, setShowPassword] = React.useState(false);
   const isAuth = useSelector((state) => state.isAuth);
 
   return (
@@ -35,9 +36,18 @@ export function NestedModal({ open, setOpen, handleClose, handleOpen, modal, set
           </div>
 
           {modal === 'sign up' ? (
-            <FormRegistration setOpen={setOpen} setModal={setModal} />
+            <FormRegistration
+              setOpen={setOpen}
+              setModal={setModal}
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
           ) : (
-            <FormAuthorization setOpen={setOpen} />
+            <FormAuthorization
+              setOpen={setOpen}
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
           )}
           <div className="close">
             <ContainedButtons
