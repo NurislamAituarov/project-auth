@@ -2,16 +2,16 @@ import { TextField } from '@mui/material';
 import { Controller, useForm, useFormState } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 import ContainedButtons from '../ContainedButtons';
 import { loginValidation, passwordValidation } from './validation';
 import { registerSuccessfully } from '../../Actions';
 import { createUser } from '../../Api/client';
-
 import ClearForm from './form-components/ClearForm';
 import { Eye } from './form-components/Eye';
 
-export function FormRegistration({ setOpen, setModal, showPassword, setShowPassword }) {
+export function FormRegistration({ setOpen, setModal }) {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       FirstName: '',
@@ -24,6 +24,7 @@ export function FormRegistration({ setOpen, setModal, showPassword, setShowPassw
     stage: false,
     errorItem: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
   const { errors } = useFormState({ control });
   const dispatch = useDispatch();
 
@@ -48,6 +49,15 @@ export function FormRegistration({ setOpen, setModal, showPassword, setShowPassw
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="register__form">
+        {error.stage && (
+          <motion.h3
+            initial={{ x: 200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+            className="error__server">
+            {error.errorItem}
+          </motion.h3>
+        )}
         <div className="modal__input-names flex">
           <Controller
             control={control}
@@ -84,11 +94,6 @@ export function FormRegistration({ setOpen, setModal, showPassword, setShowPassw
             )}
           />
         </div>
-        {error.stage && (
-          <h3 style={{ color: 'red', marginBottom: '20px', fontSize: '14px' }}>
-            {error.errorItem}
-          </h3>
-        )}
 
         <Controller
           control={control}

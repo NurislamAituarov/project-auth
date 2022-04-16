@@ -1,5 +1,6 @@
 .main__container {
   height: 100vh;
+  overflow: hidden;
 }
 
 .addUser {
@@ -26,27 +27,41 @@
     line-height: calc(26px + 24 * (100vw / 1400));
   }
   span {
-    font-size: 18px;
+    font-size: 25px;
   }
 }
 .fon {
   background-image: url(../../Images/fon.jpg);
   background-size: cover;
 }
-@media (max-width: 1008px) {
+.ticker {
+  width: 100%;
+  color: red;
+  position: fixed;
+  bottom: 0;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1080px) {
   .main__house-img {
     width: 200px;
   }
-}
-@media (max-width: 768px) {
   .main__house-img {
     display: none;
   }
+}
+@media (max-width: 768px) {
   .main__auth {
     width: 100%;
   }
 }
 @media (max-width: 378px) {
+  .main__auth {
+    span {
+      font-size: 18px;
+    }
+  }
   .addUser {
     left: 50%;
     top: 50%;

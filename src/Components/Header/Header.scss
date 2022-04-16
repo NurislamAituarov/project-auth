@@ -13,11 +13,13 @@
     margin-left: 30px;
   }
 }
-@media (max-width: 1408px) {
+
+@media (max-width: 1500px) {
   .header__container {
     padding: 20px 150px;
   }
 }
+
 @media (max-width: 768px) {
   .header__container {
     padding: 20px;

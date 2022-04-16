@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import './Modal.scss';
@@ -9,9 +8,6 @@ import { FormRegistration } from './FormRegistration';
 import { FormAuthorization } from './FormAuthorization';
 
 export function NestedModal({ open, setOpen, handleClose, handleOpen, modal, setModal }) {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const isAuth = useSelector((state) => state.isAuth);
-
   return (
     <div>
       <Modal
@@ -34,20 +30,10 @@ export function NestedModal({ open, setOpen, handleClose, handleOpen, modal, set
               click={() => setModal('log in')}
             />
           </div>
-
           {modal === 'sign up' ? (
-            <FormRegistration
-              setOpen={setOpen}
-              setModal={setModal}
-              showPassword={showPassword}
-              setShowPassword={setShowPassword}
-            />
+            <FormRegistration setOpen={setOpen} setModal={setModal} />
           ) : (
-            <FormAuthorization
-              setOpen={setOpen}
-              showPassword={showPassword}
-              setShowPassword={setShowPassword}
-            />
+            <FormAuthorization setOpen={setOpen} />
           )}
           <div className="close">
             <ContainedButtons

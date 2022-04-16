@@ -1,7 +1,8 @@
-import { TextField } from '@mui/material';
+import { CircularProgress, TextField } from '@mui/material';
 import { Controller, useForm, useFormState } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { logInUser } from '../../Api/client';
 import { setUser } from '../../Actions';
@@ -11,7 +12,7 @@ import ClearForm from './form-components/ClearForm';
 import { Eye } from './form-components/Eye';
 import CheckboxContainer from './form-components/Checkbox';
 
-export function FormAuthorization({ setOpen, showPassword, setShowPassword }) {
+export function FormAuthorization({ setOpen }) {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       Email: '',
@@ -23,10 +24,14 @@ export function FormAuthorization({ setOpen, showPassword, setShowPassword }) {
     stage: false,
     errorItem: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     if (agree) {
+      setLoading(true);
       logInUser(data)
         .then((res) => {
           reset();
@@ -36,8 +41,8 @@ export function FormAuthorization({ setOpen, showPassword, setShowPassword }) {
           setShowPassword(false);
         })
         .catch((err) => {
+          setLoading(false);
           setError({ stage: true, errorItem: err.response.data.massage });
-          console.error(err.response);
         });
     } else {
       setError({ stage: true, errorItem: 'You must consent' });
@@ -47,7 +52,15 @@ export function FormAuthorization({ setOpen, showPassword, setShowPassword }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="auth__form">
-      {error.stage && <h3 style={{ color: 'red', marginBottom: '20px' }}>{error.errorItem}</h3>}
+      {error.stage && (
+        <motion.h3
+          initial={{ x: 200 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1 }}
+          className="error__server">
+          {error.errorItem}
+        </motion.h3>
+      )}
       <Controller
         control={control}
         name="Email"
@@ -90,7 +103,19 @@ export function FormAuthorization({ setOpen, showPassword, setShowPassword }) {
       </div>
       <ClearForm reset={reset} />
       <CheckboxContainer agree={agree} setAgree={setAgree} />
-      <ContainedButtons title="Log in" fullWidth={true} size="large" formBTN={true} type="submit" />
+      {!loading ? (
+        <ContainedButtons
+          title="Log in"
+          fullWidth={true}
+          size="large"
+          formBTN={true}
+          type="submit"
+        />
+      ) : (
+        <div style={{ textAlign: 'center', marginBottom: '5px' }}>
+          <CircularProgress />
+        </div>
+      )}
     </form>
   );
 }
