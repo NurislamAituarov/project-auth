@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContainedButtons from '../ContainedButtons';
 import { NestedModal } from '../Modal-form';
 import { useEffect, useState } from 'react';
-import { getUsers } from '../../Api/client';
 
 import { auth, logOut } from '../../Actions';
 import { AvatarUser } from './Avatar';
 import { HomeIcon } from './HomeIcon';
+import { Skeleton } from '../Skeleton';
 
 export function Header({ open, setOpen }) {
   const isAuth = useSelector((state) => state.user.isAuth);
@@ -18,7 +18,6 @@ export function Header({ open, setOpen }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // getUsers().then((users) => console.log(users));
     dispatch(auth());
   }, []);
 
@@ -40,7 +39,13 @@ export function Header({ open, setOpen }) {
           <HomeIcon color={isAuth ? 'error' : 'primary'} sx={{ fontSize: 40 }} />
         </motion.div>
 
-        {!isAuth ? (
+        {isAuth && (
+          <div className="header__btns-login flex">
+            <AvatarUser />
+            <ContainedButtons title="log off" color="error" click={() => dispatch(logOut())} />
+          </div>
+        )}
+        {isAuth === false && (
           <Stack direction="row" spacing={2}>
             <ContainedButtons
               title="sign up"
@@ -57,12 +62,8 @@ export function Header({ open, setOpen }) {
               }}
             />
           </Stack>
-        ) : (
-          <div className="header__btns-login flex">
-            <AvatarUser />
-            <ContainedButtons title="log off" color="error" click={() => dispatch(logOut())} />
-          </div>
         )}
+        {isAuth === null && <Skeleton />}
       </header>
       <NestedModal
         modal={modal}

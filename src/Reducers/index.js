@@ -1,7 +1,7 @@
 const initialState = {
   success: null,
   currentUser: null,
-  isAuth: false,
+  isAuth: null,
 };
 
 export const reducer = (state = initialState, action) => {

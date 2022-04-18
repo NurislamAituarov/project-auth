@@ -112,7 +112,7 @@ export function FormAuthorization({ setOpen }) {
           type="submit"
         />
       ) : (
-        <div style={{ textAlign: 'center', marginBottom: '5px' }}>
+        <div style={{ textAlign: 'center', height: '45px', marginBottom: '5px' }}>
           <CircularProgress />
         </div>
       )}

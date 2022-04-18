@@ -13,6 +13,7 @@ export const auth = () => {
       dispatch(setUser(response.data.user));
       localStorage.setItem('token', response.data.token);
     } catch (e) {
+      dispatch(logOut());
       localStorage.removeItem('token');
     }
   };
