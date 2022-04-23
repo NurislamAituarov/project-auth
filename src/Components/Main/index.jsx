@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import cn from 'classnames';
 import { useSelector } from 'react-redux';
 
-import house from '../../Images/house-icon.png';
-import add from '../../Images/success.svg';
+import house from '../../assets/house-icon.png';
+import add from '../../assets/success.svg';
 
 export function Main({ open }) {
   const { register, isAuth, currentUser } = useSelector((state) => state.user);

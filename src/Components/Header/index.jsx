@@ -8,8 +8,8 @@ import { NestedModal } from '../Modal-form';
 import { useEffect, useState } from 'react';
 
 import { auth, logOut } from '../../Actions';
-import { AvatarUser } from './Avatar';
-import { HomeIcon } from './HomeIcon';
+import { AvatarUser } from './components/Avatar';
+import { HomeIcon } from './components/HomeIcon';
 import { Skeleton } from '../Skeleton';
 
 export function Header({ open, setOpen }) {
@@ -18,7 +18,9 @@ export function Header({ open, setOpen }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(auth());
+    if (localStorage.getItem('token')) {
+      dispatch(auth());
+    }
   }, []);
 
   const handleOpen = () => {
@@ -45,7 +47,7 @@ export function Header({ open, setOpen }) {
             <ContainedButtons title="log off" color="error" click={() => dispatch(logOut())} />
           </div>
         )}
-        {isAuth === false && (
+        {!localStorage.getItem('token') && (
           <Stack direction="row" spacing={2}>
             <ContainedButtons
               title="sign up"
@@ -63,7 +65,7 @@ export function Header({ open, setOpen }) {
             />
           </Stack>
         )}
-        {isAuth === null && <Skeleton />}
+        {!isAuth && localStorage.getItem('token') && <Skeleton />}
       </header>
       <NestedModal
         modal={modal}

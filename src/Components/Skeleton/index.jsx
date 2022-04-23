@@ -3,10 +3,10 @@ import ContentLoader from 'react-content-loader';
 export function Skeleton() {
   return (
     <ContentLoader
-      speed={1.5}
+      speed={1}
       width={180}
-      height={40}
-      viewBox="0 0 180 40"
+      height={44}
+      viewBox="0 0 180 44"
       backgroundColor="#8a8a8a"
       foregroundColor="#212121">
       <rect x="97" y="95" rx="0" ry="0" width="0" height="1" />
@@ -20,8 +20,8 @@ export function Skeleton() {
       <rect x="435" y="31" rx="0" ry="0" width="30" height="20" />
       <rect x="487" y="31" rx="0" ry="0" width="30" height="20" />
       <rect x="538" y="30" rx="0" ry="0" width="30" height="20" />
-      <rect x="5" y="0" rx="5" ry="5" width="78" height="40" />
-      <rect x="99" y="0" rx="5" ry="5" width="78" height="40" />
+      <rect x="86" y="3" rx="5" ry="5" width="90" height="39" />
+      <circle cx="41" cy="22" r="22" />
     </ContentLoader>
   );
 }
