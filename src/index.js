@@ -1,10 +1,12 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
-import 'normalize.css';
-import './index.scss';
 import { Provider } from 'react-redux';
+import { createRoot } from 'react-dom/client';
+
+import App from './app';
+import 'normalize.css';
+import './assets/styles/main.scss';
 import { store } from './store';
+
 const root = createRoot(document.getElementById('root'));
 
 root.render(

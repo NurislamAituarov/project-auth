@@ -1,16 +1,16 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { CircularProgress, TextField } from '@mui/material';
 import { Controller, useForm, useFormState } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { logInUser } from '../../Api/client';
-import { setUser } from '../../Actions';
-import ContainedButtons from '../ContainedButtons';
+import CheckboxContainer from './components/Checkbox';
+import ContainedButtons from '../contained-buttons';
+import ClearForm from './components/ClearForm';
+import { Eye } from './components/Eye';
+import { setUser } from '../../store/actions';
+import { logInUser } from '../../api/client';
 import { loginValidation } from './validation';
-import ClearForm from './form-components/ClearForm';
-import { Eye } from './form-components/Eye';
-import CheckboxContainer from './form-components/Checkbox';
 
 export function FormAuthorization({ setOpen }) {
   const { handleSubmit, control, reset } = useForm({
