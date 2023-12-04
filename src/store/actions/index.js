@@ -1,4 +1,4 @@
-import { httpClient } from '../Api/httpClient';
+import { httpClient } from '../../api/httpClient';
 
 export const registerSuccessfully = (value) => ({ type: 'SUCCESS', payload: value });
 export const setUser = (user) => ({ type: 'SET_USER', payload: user });

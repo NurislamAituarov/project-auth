@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import ContainedButtons from '../ContainedButtons';
+import ClearForm from './components/ClearForm';
+import ContainedButtons from '../contained-buttons';
+import { Eye } from './components/Eye';
 import { loginValidation, passwordValidation } from './validation';
-import { registerSuccessfully } from '../../Actions';
-import { createUser } from '../../Api/client';
-import ClearForm from './form-components/ClearForm';
-import { Eye } from './form-components/Eye';
+import { createUser } from '../../api/client';
+import { registerSuccessfully } from '../../store/actions';
 
 export function FormRegistration({ setOpen, setModal }) {
   const { handleSubmit, control, reset } = useForm({

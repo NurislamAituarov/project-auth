@@ -1,27 +1,21 @@
-import './Header.scss';
+import { useState } from 'react';
 import { Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ContainedButtons from '../ContainedButtons';
-import { NestedModal } from '../Modal-form';
-import { useEffect, useState } from 'react';
-
-import { auth, logOut } from '../../Actions';
 import { AvatarUser } from './components/Avatar';
 import { HomeIcon } from './components/HomeIcon';
-import { Skeleton } from '../Skeleton';
+import { NestedModal } from '../modal-form';
+import ContainedButtons from '../contained-buttons';
+
+import { logOut } from '../../store/actions';
+import { Skeleton } from '../skeleton';
+import './Header.scss';
 
 export function Header({ open, setOpen }) {
   const isAuth = useSelector((state) => state.user.isAuth);
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      dispatch(auth());
-    }
-  }, []);
 
   const handleOpen = () => {
     setOpen(true);

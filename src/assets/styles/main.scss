@@ -1,15 +1,11 @@
-body {
-  color: rgb(247, 247, 247);
-  background: var(--background-main);
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-button {
+body {
+  color: rgb(247, 247, 247);
+  background: var(--background-main);
 }
 
 .flex {

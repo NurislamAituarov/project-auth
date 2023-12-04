@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import './Modal.scss';
 
-import ContainedButtons from '../ContainedButtons';
+import ContainedButtons from '../contained-buttons';
 import { FormRegistration } from './FormRegistration';
 import { FormAuthorization } from './FormAuthorization';
+import './Modal.scss';
 
 export function NestedModal({ open, setOpen, handleClose, handleOpen, modal, setModal }) {
   return (
