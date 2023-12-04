@@ -20,13 +20,13 @@ export function NestedModal({ open, setOpen, handleClose, handleOpen, modal, set
             <ContainedButtons
               title="Sign up"
               color="success"
-              disabled={modal === 'sign up' && true}
+              disabled={modal === 'sign up'}
               click={() => setModal('sign up')}
             />
             <ContainedButtons
               title="Log in"
               color="success"
-              disabled={modal === 'log in' && true}
+              disabled={modal === 'log in'}
               click={() => setModal('log in')}
             />
           </div>
