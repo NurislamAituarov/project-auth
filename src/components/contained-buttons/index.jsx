@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import { CircularProgress } from '@mui/material';
 
 export default function ContainedButtons({
   title,
@@ -9,17 +10,26 @@ export default function ContainedButtons({
   formBTN,
   color,
   disabled,
+  loading,
 }) {
   return (
     <Button
       disabled={disabled}
-      sx={formBTN && { marginTop: '10px', height: '60px', letterSpacing: '2px' }}
+      sx={
+        formBTN && {
+          marginTop: '10px',
+          height: '60px',
+          letterSpacing: '2px',
+          display: 'flex',
+          alignItems: 'center',
+        }
+      }
       type={type}
       color={color}
       fullWidth={fullWidth}
       onClick={click}
       variant="contained">
-      {title}
+      {!loading ? title : <CircularProgress size={30} color="info" />}
     </Button>
   );
 }

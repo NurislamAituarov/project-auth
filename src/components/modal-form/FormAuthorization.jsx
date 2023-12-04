@@ -103,19 +103,15 @@ export function FormAuthorization({ setOpen }) {
       </div>
       <ClearForm reset={reset} />
       <CheckboxContainer agree={agree} setAgree={setAgree} />
-      {!loading ? (
-        <ContainedButtons
-          title="Log in"
-          fullWidth={true}
-          size="large"
-          formBTN={true}
-          type="submit"
-        />
-      ) : (
-        <div style={{ textAlign: 'center', height: '45px', marginBottom: '5px' }}>
-          <CircularProgress />
-        </div>
-      )}
+
+      <ContainedButtons
+        title="Log in"
+        fullWidth={true}
+        size="large"
+        formBTN={true}
+        type="submit"
+        loading={loading}
+      />
     </form>
   );
 }
